@@ -1,8 +1,17 @@
+"""
+@Auther: HeTongHao
+@Date: 18/8/29 17:18
+@Description: 今日头条爬虫
+"""
 import requests
 import os
 
 
 def download(path_a=None):
+    """
+    搜索今日头条内容，并且下载相关图片到指定路径
+    :param path_a: 要下载到的路径
+    """
     if path_a is None:
         path_a = os.path.abspath('.')
     else:

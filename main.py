@@ -1,9 +1,13 @@
+"""
+@Auther: HeTongHao
+@Date: 18/8/29 17:18
+@Description: 测试启动模块
+"""
 import sys
 import os
-import pack.download as download
+import reptile.todayHead as download
 import psycopg2
 import pgsql.pgsql as pgsql
-
 
 # class A:
 #     pass
