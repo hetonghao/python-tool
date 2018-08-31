@@ -27,8 +27,8 @@ def select(sql):
         print("PostgresSql------Select : ", sql)
         cursor.execute(sql)
         return cursor.fetchall()
-    except Exception as ex:
-        print("PostgresSql------执行sql异常", ex.args)
+    except Exception as e:
+        print("PostgresSql------执行sql异常 : ", e.args)
 
 
 def update(sql):
@@ -36,8 +36,8 @@ def update(sql):
     try:
         print("PostgresSql------Update : ", sql)
         cursor.execute(sql)
-    except Exception as ex:
-        print("PostgresSql------执行sql异常", ex.args)
+    except Exception as e:
+        print("PostgresSql------执行sql异常 : ", e.args)
 
 
 def commit():
@@ -48,5 +48,5 @@ def commit():
 
 def connect_close():
     global connection
-    print("PostgresSql------链接已关闭")
+    print("PostgresSql------连接已关闭")
     connection.close()

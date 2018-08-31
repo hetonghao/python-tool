@@ -6,49 +6,69 @@
 import sys
 import os
 import reptile.todayHead as download
-import psycopg2
 import pgsql.pgsql as pgsql
+import mysql.mysql as mysql
+import pymysql
 
-# class A:
-#     pass
-#
-#
-# class B(A):
-#     pass
-#
-#
-# a = None
-# if not a:
-#     print('ss')
-#
-# print(os.path.abspath("."))
-# print(os.path.abspath('.').index('U'))
-# print(os.path.abspath('.').rindex('U'))
-# print(type('s'))
-# print(type(1))
-# print(isinstance(2, bool))
-# print(isinstance(A(), A))
-# print(isinstance(B(), A))
-pgsql.connect(password="123456")
-pgsql.update("delete from test where id=8")
-pgsql.update("insert into test(text) values ('666')")
-pgsql.update("update test set text='asasdasd' where id=12")
-pgsql.commit()
-print(pgsql.select("select * from test order by id asc"))
-pgsql.connect_close()
 
-# conn.commit()
-# array = os.path.abspath('.').split('/')
-# sysPath = sys.path
-# for x in array:
-#     if x not in '':
-#         print(x + ' ', end='')
-# print('\n')
-# for x in sysPath:
-#     subPaths = x.split('/')
-#     for sub in subPaths:
-#         if sub not in '':
-#             print(sub + ' ', end='')
-#     print()
-# print()
-# download.download('/Users/HTH/Desktop/爬图片')
+def mysql_function():
+    pymysql.connect(db="test", user="root", passwd="123456", host="127.0.0.1", port=3306)
+    mysql.connect()
+    mysql.update("insert into test(text) values('测试数据')")
+    mysql.commit()
+    print(mysql.select("select * from test"))
+    mysql.connect_close()
+
+
+def shi_yong():
+    # 实用方法
+    class A:
+        pass
+
+    class B(A):
+        pass
+
+    a = None
+    if not a:
+        print('ss')
+    print(os.path.abspath("."))
+    print(os.path.abspath('.').index('U'))
+    print(os.path.abspath('.').rindex('U'))
+    print(type('s'))
+    print(type(1))
+    print(isinstance(2, bool))
+    print(isinstance(A(), A))
+    print(isinstance(B(), A))
+
+
+def postgres():
+    # 调用postgresSql
+    pgsql.connect(password="123456")
+    pgsql.update("delete from test where id=8")
+    pgsql.update("insert into test(text) values ('666')")
+    pgsql.update("update test set text='asasdasd' where id=12")
+    pgsql.commit()
+    print(pgsql.select("select * from test order by id asc"))
+    pgsql.connect_close()
+
+
+def chai_fen_path():
+    # 拆分路径
+    array = os.path.abspath('.').split('/')
+    sysPath = sys.path
+    for x in array:
+        if x not in '':
+            print(x + ' ', end='')
+    print('\n')
+    for x in sysPath:
+        subPaths = x.split('/')
+        for sub in subPaths:
+            if sub not in '':
+                print(sub + ' ', end='')
+        print()
+    print()
+
+
+def pa_chong():
+    # 调用爬虫
+    download.download('/Users/HTH/Desktop/爬图片')
