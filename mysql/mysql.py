@@ -22,6 +22,11 @@ def connect(database="test", user="root", password="123456", host="127.0.0.1", p
 
 
 def select(sql):
+    """
+    传入查询sql，返回所有查询到的结果
+    :param sql:
+    :return:
+    """
     global cursor
     try:
         print("MySql------Select : ", sql)
@@ -32,10 +37,16 @@ def select(sql):
 
 
 def update(sql):
+    """
+    传入更新sql，返回受影响行数
+    :param sql:
+    :return:
+    """
     global cursor
     try:
         print("MySql------Update : ", sql)
         cursor.execute(sql)
+        return cursor.rowcount
     except pymysql.Error as e:
         print("MySql------执行sql异常 : ", e.args)
 

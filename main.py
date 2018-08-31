@@ -14,7 +14,7 @@ import pymysql
 def mysql_function():
     pymysql.connect(db="test", user="root", passwd="123456", host="127.0.0.1", port=3306)
     mysql.connect()
-    mysql.update("insert into test(text) values('测试数据')")
+    print(mysql.update("insert into test(text) values('测试数据')"))
     mysql.commit()
     print(mysql.select("select * from test"))
     mysql.connect_close()
@@ -45,11 +45,14 @@ def postgres():
     # 调用postgresSql
     pgsql.connect(password="123456")
     pgsql.update("delete from test where id=8")
-    pgsql.update("insert into test(text) values ('666')")
-    pgsql.update("update test set text='asasdasd' where id=12")
+    print(pgsql.update("insert into test(text) values ('666')"))
+    print(pgsql.update("update test set text='asasdasd' where id=12"))
     pgsql.commit()
     print(pgsql.select("select * from test order by id asc"))
     pgsql.connect_close()
+
+
+# postgres()
 
 
 def chai_fen_path():
