@@ -8,16 +8,26 @@ import os
 import reptile.todayHead as download
 import pgsql.pgsql as pgsql
 import mysql.mysql as mysql
-import pymysql
 
 
 def mysql_function():
-    pymysql.connect(db="test", user="root", passwd="123456", host="127.0.0.1", port=3306)
     mysql.connect()
-    print(mysql.update("insert into test(text) values('测试数据')"))
-    mysql.commit()
-    print(mysql.select("select * from test"))
+    # print(mysql.update("insert into test(text) values('测试数据2')"))
+    # mysql.commit()
+    data = mysql.select("select id,text from test")
+    for item in data:
+        i = 0
+        for value in item:
+            if i == 0:
+                print("id:%d" % value, end="\t")
+                i += 1
+            elif i == 1:
+                print("text: %s" % value, end="\t")
+        print()
     mysql.connect_close()
+
+
+mysql_function()
 
 
 def shi_yong():
@@ -75,3 +85,5 @@ def chai_fen_path():
 def pa_chong():
     # 调用爬虫
     download.download('/Users/HTH/Desktop/爬图片')
+
+# pa_chong()

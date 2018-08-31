@@ -9,11 +9,11 @@ connection = None
 cursor = None
 
 
-def connect(database="test", user="root", password="123456", host="127.0.0.1", port=3306):
+def connect(database="test", user="root", password="123456", host="127.0.0.1", port="3306"):
     global connection
     global cursor
     try:
-        connection = pymysql.connect(db=database, user=user, passwd=password, host=host, port=port)
+        connection = pymysql.connect(db=database, user=user, passwd=password, host=host, port=int(port))
         cursor = connection.cursor()
         print("MySql------连接成功")
         return connection
