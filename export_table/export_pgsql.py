@@ -40,7 +40,7 @@ def group_name_handle(grep_name):
         return 'charge'
     elif grep_name == 'sys':
         return 'system'
-    elif grep_name == 'code':
+    elif grep_name == 'code' or grep_name == 'pay' or grep_name == 'oauth':
         return 'common'
     else:
         return grep_name

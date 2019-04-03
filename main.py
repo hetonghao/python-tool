@@ -13,17 +13,15 @@ from export_table.export_markdown import ExportMarkDown
 from export_table.export_word import ExportWord
 
 test_path = '/Users/HTH/Desktop/docx/'
-git_project_docs_path = '/Users/HTH/IdeaProject/docs/backend/数据库表设计/'
+git_project_docs_path = '/Users/HTH/IdeaProject/docs/backend/database-design/'
 
 
 def main():
     try:
-        pg_sql.connect('bull', 'bull', 'vvAFXHrxKe672Rc*Y43T*Fv4wPkrxTiV', 'pgm-wz9006t1oky2042t3o.pg.rds.aliyuncs.com',
+        pg_sql.connect('bull', 'bull', 'xx', 'xx',
                        3432)  # 开启连接
-        export_markdown = ExportMarkDown(test_path)
-        export_word = ExportWord(test_path)
+        export_markdown = ExportMarkDown(git_project_docs_path)
         export_markdown.export()
-        export_word.export()
     finally:
         pg_sql.connect_close()
 
