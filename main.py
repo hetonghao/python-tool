@@ -6,8 +6,36 @@
 import sys
 import os
 import reptile.todayHead as download
-import pgsql.pgsql as pgsql
 import mysql.mysql as mysql
+from school.people import People, Student
+import pgsql.pgsql as pg_sql
+from export_table.export_markdown import ExportMarkDown
+from export_table.export_word import ExportWord
+
+test_path = '/Users/HTH/Desktop/docx/'
+git_project_docs_path = '/Users/HTH/IdeaProject/docs/backend/数据库表设计/'
+
+
+def main():
+    try:
+        pg_sql.connect('bull', 'bull', 'vvAFXHrxKe672Rc*Y43T*Fv4wPkrxTiV', 'pgm-wz9006t1oky2042t3o.pg.rds.aliyuncs.com',
+                       3432)  # 开启连接
+        export_markdown = ExportMarkDown(test_path)
+        export_word = ExportWord(test_path)
+        export_markdown.export()
+        export_word.export()
+    finally:
+        pg_sql.connect_close()
+
+
+def school_show():
+    p = People("何同昊", 22)
+    p.show()
+    p = Student("何同昊", 22, 1)
+    p.show()
+
+
+# school_show()
 
 
 def mysql_function():
@@ -16,18 +44,8 @@ def mysql_function():
     # mysql.commit()
     data = mysql.select("select id,text from test")
     for item in data:
-        i = 0
-        for value in item:
-            if i == 0:
-                print("id:%d" % value, end="\t")
-                i += 1
-            elif i == 1:
-                print("text: %s" % value, end="\t")
-        print()
+        print("id:%d\t text: %s" % (item[0], item[1]))
     mysql.connect_close()
-
-
-mysql_function()
 
 
 def shi_yong():
@@ -53,13 +71,13 @@ def shi_yong():
 
 def postgres():
     # 调用postgresSql
-    pgsql.connect(password="123456")
-    pgsql.update("delete from test where id=8")
-    print(pgsql.update("insert into test(text) values ('666')"))
-    print(pgsql.update("update test set text='asasdasd' where id=12"))
-    pgsql.commit()
-    print(pgsql.select("select * from test order by id asc"))
-    pgsql.connect_close()
+    pg_sql.connect(password="123456")
+    pg_sql.update("delete from test where id=8")
+    print(pg_sql.update("insert into test(text) values ('666')"))
+    print(pg_sql.update("update test set text='asasdasd' where id=12"))
+    pg_sql.commit()
+    print(pg_sql.select("select * from test order by id asc"))
+    pg_sql.connect_close()
 
 
 # postgres()
@@ -86,4 +104,5 @@ def pa_chong():
     # 调用爬虫
     download.download('/Users/HTH/Desktop/爬图片')
 
-# pa_chong()
+
+main()

@@ -1,7 +1,7 @@
 """
-@Auther: HeTongHao
-@Date: 18/8/29 17:18
-@Description: 访问PostgresSql 封装
+@Author HeTongHao
+@Date 18/8/29 17:18
+@Description 访问PostgresSql 封装
 """
 import psycopg2
 
