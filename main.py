@@ -1,7 +1,7 @@
 """
-@Auther: HeTongHao
-@Date: 18/8/29 17:18
-@Description: 测试启动模块
+@author HeTongHao
+@Date 18/8/29 17:18
+@Description 测试启动模块
 """
 import sys
 import os
@@ -10,16 +10,14 @@ import mysql.mysql as mysql
 from school.people import People, Student
 import pgsql.pgsql as pg_sql
 from export_table.export_markdown import ExportMarkDown
-from export_table.export_word import ExportWord
 
-test_path = '/Users/HTH/Desktop/docx/'
-git_project_docs_path = '/Users/HTH/IdeaProject/docs/backend/database-design/'
+test_path = '/Users/HTH/Desktop/docx'
+git_project_docs_path = '/Users/HTH/Desktop/table'
 
 
 def main():
     try:
-        pg_sql.connect('bull', 'bull', 'xx', 'xx',
-                       3432)  # 开启连接
+        pg_sql.connect()  # 开启连接
         export_markdown = ExportMarkDown(git_project_docs_path)
         export_markdown.export()
     finally:

@@ -17,7 +17,7 @@ class ExportMarkDown:
             os.mkdir(self.export_path)
         for grep_name in module_greps.keys():
             file_name = 'bull_' + grep_name + '模块表结构设计.md'
-            f = open(self.export_path + file_name, 'w+')
+            f = open(self.export_path + '/' + file_name, 'w+')
             for table_detail in module_greps[grep_name]:
                 add_table(f, table_detail)
             f.close()

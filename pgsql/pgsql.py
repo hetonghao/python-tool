@@ -2,6 +2,7 @@
 @Author HeTongHao
 @Date 18/8/29 17:18
 @Description 访问PostgresSql 封装
+$ pip install psycopg2-binary
 """
 import psycopg2
 
